@@ -11,7 +11,7 @@ app.config.from_mapping(config)
 
 @app.route('/')
 def index():
-    return f.render_template("Pyckets/Frontend/index.html")
+    return f.render_template("index.html")
 
 if __name__ == "__main__":
     app.run()
