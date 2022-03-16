@@ -1,11 +1,17 @@
-from flask import Flask
+import flask as f
 
-app = Flask(__name__)
+config = {
+    "DEBUG": True  # run app in debug mode
+}
+
+app = f.Flask(__name__)
+
+# Flask to use the above defined config
+app.config.from_mapping(config)
 
 @app.route('/')
 def index():
-    with open("Frontend/index.html") as f:
-        return f.read()
+    return f.render_template("index.html")
 
 if __name__ == "__main__":
     app.run()
