@@ -13,5 +13,9 @@ app.config.from_mapping(config)
 def index():
     return f.render_template("index.html")
 
+@app.route('/creer-un-evenement')
+def event():
+    return f.render_template("soon.html")
+
 if __name__ == "__main__":
     app.run()

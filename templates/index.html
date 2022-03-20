@@ -7,9 +7,9 @@
         <meta name="author" content="" />
         <title>Pyckets</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}"/>
+        <link rel="icon" href="{{ url_for('static', filename='assets/icon.png')}}" />
         <!-- Font Awesome icons (free version)-->
-        <script src="{{ url_for('static', filename='scripts.css') }}" crossorigin="anonymous"></script>
+        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
@@ -27,7 +27,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="#portfolio">Evenements</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="#evenements">Evenements</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="#A propos">A propos</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -51,10 +52,10 @@
             </div>
         </header>
         <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
+        <section class="page-section portfolio" id="evenements">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Evenements</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -121,10 +122,10 @@
             </div>
         </section>
         <!-- About Section-->
-        <section class="page-section bg-primary text-white mb-0" id="about">
+        <section class="page-section bg-primary text-white mb-0" id="A propos">
             <div class="container">
                 <!-- About Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-white">A propos</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
@@ -133,14 +134,13 @@
                 </div>
                 <!-- About Section Content-->
                 <div class="row">
-                    <div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-                    <div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+                    <div class="col-lg-4 ms-auto"><p class="lead">Pyckets est une plateforme de vente de tickets pour vos évènements. Vous organisez un concert, un festival, une conférence ? Utilisez nous pour vendre vos places !</p></div>
+                    <div class="col-lg-4 me-auto"><p class="lead">Vous pouvez créer votre propre évènement avec <u>vos</u> contraintes (nombre de places, prix, tranche d'âge ...)</p></div>
                 </div>
                 <!-- About Section Button-->
                 <div class="text-center mt-4">
-                    <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
-                        <i class="fas fa-download me-2"></i>
-                        Free Download!
+                    <a class="btn btn-xl btn-outline-light" href="/creer-un-evenement">
+                        Commencez dès maintenant !
                     </a>
                 </div>
             </div>
@@ -274,11 +274,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{ url_for('static', filename='assets/img/portfolio/cabin.png') }}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4"></p>
                                 </div>
                             </div>
                         </div>
@@ -306,11 +302,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{ url_for('static', filename='assets/img/portfolio/cake.png') }}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4"></p>
                                 </div>
                             </div>
                         </div>
@@ -338,11 +330,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{ url_for('static', filename='assets/img/portfolio/circus.png') }}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4"></p>
                                 </div>
                             </div>
                         </div>
@@ -370,11 +358,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{ url_for('static', filename='assets/img/portfolio/game.png') }}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4"></p>
                                 </div>
                             </div>
                         </div>
@@ -402,11 +386,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{ url_for('static', filename='assets/img/portfolio/safe.png') }}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4"></p>
                                 </div>
                             </div>
                         </div>
@@ -434,11 +414,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="{{ url_for('static', filename='assets/img/portfolio/submarine.png') }}" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                                    <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Close Window
-                                    </button>
+                                    <p class="mb-4"></p>
                                 </div>
                             </div>
                         </div>
@@ -449,7 +425,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="{{ url_for('static', filename='scripts.js') }}"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
