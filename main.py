@@ -13,5 +13,13 @@ app.config.from_mapping(config)
 def index():
     return f.render_template("index.html")
 
+@app.route('/creer-un-evenement')
+def event():
+    return f.render_template("soon.html")
+
+@app.route('/réseaux')
+def social():
+    return f.render_template("social.html")
+
 if __name__ == "__main__":
     app.run()
