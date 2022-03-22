@@ -23,10 +23,10 @@ Voici la hiérarchie des fichiers :
 > > > > img
 > > > > > events
 > > > > > > cabin.png |
-> > > > > > cake.png
+> > > > > > cake.png |
 > > > > > > circurs.png |
-> > > > > > game.png
-> > > > > > museum.png
+> > > > > > game.png |
+> > > > > > museum.png |
 > > > > > > submarine.png
 > > > > >
 > > > > > avataaars.svg
