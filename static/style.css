@@ -65,6 +65,12 @@
   }
 }
 
+.logo {
+  height: 8%;
+  width: 8%;
+  margin-right: 10px;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
