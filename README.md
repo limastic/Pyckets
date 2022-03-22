@@ -2,8 +2,9 @@
 
 **Pyckets** est une plateforme de vente de tickets en ligne.
 
-# Fonctionnalités de la V.0 : 
+# Changelog : 
 
+## V.O :
 - Site affiché en se connectant en local au **serveur flask**.
 - Redirection vers les autres pages du site en cliquant sur les boutons
 - Pages temporaires qui seront bientot complétées
@@ -19,7 +20,7 @@ Voici la hiérarchie des fichiers :
 
 > Pyckets
 > > static
-> > > assets
+> > > assets (contient uniquement des éléments graphiques)
 > > > > img
 > > > > > events
 > > > > > > cabin.png |
@@ -35,19 +36,20 @@ Voici la hiérarchie des fichiers :
 > >
 > >  logo.png
 > >
-> >  script.js
+> >  script.js (script)
 > >
-> >  style.css
+> >  style.css (feuille de style pour le html)
 > >
-> > templates
+> > templates (fichiers html des pages du site)
 > > > index.html |
 > > > social.html |
 > > > soon.html
 > >
 > > .gitignore
 > >
-> > app.py
+> > app.py (fonctions flask gérant le serveur)
 > >
 > > README.md
 > >
-> > requirements.txt
+> > requirements.txt (modules requis pour le projet)
+
