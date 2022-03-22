@@ -8,3 +8,4 @@
 - Redirection vers les autres pages du site en cliquant sur les boutons
 - Pages temporaires qui seront bientot complétées
 - CSS et Javascript liés au HTML (+ images avec {{ url_for('static', filename='nom') }})
+- Affichage d'une base de données avec Flask
