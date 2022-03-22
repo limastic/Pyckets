@@ -21,5 +21,14 @@ def event():
 def social():
     return f.render_template("social.html")
 
+@app.route('/utilisateur')
+@app.route('/utilisateur/<name>')
+def affiche_nom(name="Kan-à-ille"):
+    return 'Bienvenue à toi, ' + str(name)
+
+@app.route('/somme/<int:num1>/<int:num2>')
+def somme(num1, num2):
+    return str(num1+num2)
+
 if __name__ == "__main__":
     app.run()
