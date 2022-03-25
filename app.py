@@ -1,23 +1,30 @@
 from flask import Flask, request, redirect
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
-# from flask_migrate import Migrate, migrate
 
 config = {
-    "DEBUG": True,  # run app in debug mode
+    "DEBUG": True,  # activer le mode debug
     'SQLALCHEMY_DATABASE_URI': 'sqlite:///site.db'
 }
 
 app = Flask(__name__)
 db = SQLAlchemy(app)
-# migrate = Migrate(app, db)
 
+class Profile(db.Model):  # Création de la table Profile avec sql al-chemy
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(20), unique=False, nullable=False)
+    last_name = db.Column(db.String(20), unique=False, nullable=False)
+    age = db.Column(db.Integer, nullable=False)
 
-# Flask to use the above defined config
+    # la méthode __repr__ représente a quoi va ressembler un tuple de la relation
+    def __repr__(self):
+        return f"Name : {self.first_name}, Age: {self.age}"
+
+# Dire a Flask d'utiliser la configuration définie plus tot 
 app.config.from_mapping(config)
 
 
-# db.create_all()
+db.create_all()
 
 @app.route('/')
 def index():
@@ -33,17 +40,12 @@ def social():
 
 @app.route('/utilisateur')
 @app.route('/utilisateur/<name>')
-def affiche_nom(name="Kan-à-ille"):
-    return 'Bienvenue à toi, ' + str(name)
+def affiche_nom(name="Sacha le plus beau"):
+    return 'merci esclave, ' + str(name)
 
 @app.route('/somme/<int:num1>/<int:num2>')
 def somme(num1, num2):
     return str(num1+num2)
-
-
-@app.route('/db')
-def db(var_test = 12345):
-    return render_template('db.html')
 
 if __name__ == "__main__":
     app.run()
