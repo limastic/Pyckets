@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 config = {
     "DEBUG": True,  # activer le mode debug
-    'SQLALCHEMY_DATABASE_URI': 'sqlite:///site.db'
+    'SQLALCHEMY_DATABASE_URI': 'sqlite:///database/site.db'
 }
 
 app = Flask(__name__)
@@ -47,5 +47,11 @@ def affiche_nom(name="Sacha le plus beau"):
 def somme(num1, num2):
     return str(num1+num2)
 
+@app.route("/db", methods=['POST'])
+def display_db():
+    default_value = "NONE"
+    data = request.form.get('fname', default_value)
+    return render_template("db.html", data=data)
+    
 if __name__ == "__main__":
     app.run()
