@@ -1,14 +1,18 @@
-from flask import Flask, request, redirect
+from flask import Flask, request
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 
-config = {
-    "DEBUG": True,  # activer le mode debug
-    'SQLALCHEMY_DATABASE_URI': 'sqlite:///database/site.db'
-}
-
-app = Flask(__name__)
+# créer l'application et lier la base de données
+app = Flask(__name__, instance_relative_config=True)
 db = SQLAlchemy(app)
+
+
+# Configurer l'application
+app.config.from_mapping(
+    DEBUG = True,  # activer le mode debug
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///database/site.db',  # dire ou est la bdd
+    SQLALCHEMY_TRACK_MODIFICATIONS = False  # Désactiver cette option comme conseillé
+    )  
 
 class Profile(db.Model):  # Création de la table Profile avec sql al-chemy
     id = db.Column(db.Integer, primary_key=True)
@@ -20,8 +24,7 @@ class Profile(db.Model):  # Création de la table Profile avec sql al-chemy
     def __repr__(self):
         return f"Name : {self.first_name}, Age: {self.age}"
 
-# Dire a Flask d'utiliser la configuration définie plus tot 
-app.config.from_mapping(config)
+
 
 
 db.create_all()
@@ -47,11 +50,27 @@ def affiche_nom(name="Sacha le plus beau"):
 def somme(num1, num2):
     return str(num1+num2)
 
-@app.route("/db", methods=['POST'])
+@app.route("/db", methods=['POST', 'GET'])
 def display_db():
     default_value = "NONE"
     data = request.form.get('fname', default_value)
     return render_template("db.html", data=data)
-    
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    # handle the POST request
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        return '''
+        <h1>Merci, vous êtes bien inscrit, {}. Veuillez confirmer votre adresse mail: {}'''.format(name, email)
+        # otherwise handle the GET request
+    return render_template("signup.html")
+
+
+@app.route('/signin')
+def signin():
+    return render_template('soon.html')
+
 if __name__ == "__main__":
     app.run()
