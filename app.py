@@ -62,8 +62,7 @@ def signup():
     if request.method == 'POST':
         name = request.form.get('name')
         email = request.form.get('email')
-        return '''
-        <h1>Merci, vous êtes bien inscrit, {}. Veuillez confirmer votre adresse mail: {}'''.format(name, email)
+        return render_template("signedup.html", name=name)
         # otherwise handle the GET request
     return render_template("signup.html")
 
