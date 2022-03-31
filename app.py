@@ -1,3 +1,5 @@
+from ast import stmt
+from xxlimited import new
 from flask import Flask, request
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -19,6 +21,8 @@ class Profile(db.Model):  # Création de la table Profile avec sql al-chemy
     first_name = db.Column(db.String(20), unique=False, nullable=False)
     last_name = db.Column(db.String(20), unique=False, nullable=False)
     age = db.Column(db.Integer, nullable=False)
+    password = db.Column(db.String(), nullable=False)
+    email = db.Column(db.String(), unique=True, nullable=False)
 
     # la méthode __repr__ représente a quoi va ressembler un tuple de la relation
     def __repr__(self):
@@ -61,7 +65,13 @@ def signup():
     # handle the POST request
     if request.method == 'POST':
         name = request.form.get('name')
+        password = request.form.get('password')
         email = request.form.get('email')
+        name = name.split()
+        print(name, type(name))
+        new_profile = Profile(None, name[0], name[1], None, password, email)
+        db.session.add(new_profile)
+        db.session.commit()
         return render_template("signedup.html", name=name)
         # otherwise handle the GET request
     return render_template("signup.html")
