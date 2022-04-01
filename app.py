@@ -1,11 +1,10 @@
 from ast import stmt
-from xxlimited import new
 from flask import Flask, request
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 
 # créer l'application et lier la base de données
-app = Flask(__name__, instance_relative_config=True)
+app = Flask(__name__)
 db = SQLAlchemy(app)
 
 
@@ -18,11 +17,11 @@ app.config.from_mapping(
 
 class Profile(db.Model):  # Création de la table Profile avec sql al-chemy
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(20), unique=False, nullable=False)
-    last_name = db.Column(db.String(20), unique=False, nullable=False)
-    age = db.Column(db.Integer, nullable=False)
-    password = db.Column(db.String(), nullable=False)
-    email = db.Column(db.String(), unique=True, nullable=False)
+    first_name = db.Column(db.String(20))
+    last_name = db.Column(db.String(20))
+    age = db.Column(db.Integer)
+    password = db.Column(db.String())
+    email = db.Column(db.String())
 
     # la méthode __repr__ représente a quoi va ressembler un tuple de la relation
     def __repr__(self):
@@ -69,7 +68,7 @@ def signup():
         email = request.form.get('email')
         name = name.split()
         print(name, type(name))
-        new_profile = Profile(None, name[0], name[1], None, password, email)
+        new_profile = Profile(id=None, first_name=name[0], last_name=name[1], age=None, password=password, email=email)
         db.session.add(new_profile)
         db.session.commit()
         return render_template("signedup.html", name=name)
