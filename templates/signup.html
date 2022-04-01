@@ -49,27 +49,12 @@
                         </div>
                         <!-- Age -->
                         <div class="form-floating mb-3">
-                            ino
+                            <input name='age' id="age" type="date" data-sb-validations="required">
+                            <label for="password">Mot de passe</label>
+                            <div class="invalid-feedback" data-sb-feedback="password:required">Un age est requis.</div>
                         </div>
                         <!-- <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer</button> -->
                         <input type='submit'>
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
-                        <div class="d-none" id="submitSuccessMessage">
-                            <div class="text-center mb-3">
-                                <div class="fw-bolder">Echec de l'envoi du formulaire.</div>
-                                Formulaire bientôt disponible !
-                                <br />
-                            </div>
-                        </div>
-                        <!-- Submit error message-->
-                        <!---->
-                        <!-- This is what your users will see when there is-->
-                        <!-- an error submitting the form-->
-                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Une erreur est subvenue.</div></div>
-                        <!-- Submit Button-->
                         <span class='float-right'>Vous avez déjà un compte ? <a href="signin">Se connecter</a></span>
                     </form>
                     
