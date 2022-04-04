@@ -12,6 +12,12 @@
 - Affichage d'une variable passable dans l'url (donc avec la méthode **GET**)
 - Opérations sur les variables passées aussi dans l'url 
 
+## V.1 : 
+- Ajout de l'onglet "mon compte"
+- Ajout d'un formulaire d'inscription dans cet onglet
+- Récupération des données entrées dans le formulaire dans la relation Profile
+- Vérification préalable de l'unicité des données (adresse email unique)
+
 # Conception
 
 Flask est utilisé pour le serveur. 
