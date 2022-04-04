@@ -24,38 +24,33 @@
                     <form id="contactForm" method="POST">
                         <!-- Name input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name='name' id="name" type="text" placeholder="Entrez votre nom et prénom" data-sb-validations="required" />
+                            <input class="form-control" name='name' id="name" type="text" placeholder="Entrez votre nom et prénom" data-sb-validations="required" required/>
                             <label for="name">Prénom et Nom</label>
                             <div class="invalid-feedback" data-sb-feedback="name:required">Une identité est requise.</div>
                         </div>
                         <!-- Email address input-->
                         <div class="form-floating mb-3">
-                            <input class="form-control" name='email' id="email" type="email" placeholder="nom@exemple.com" data-sb-validations="required,email" />
+                            <input class="form-control" name='email' id="email" type="email" placeholder="nom@exemple.com" data-sb-validations="required,email" required/>
                             <label for="email">Addresse Email</label>
                             <div class="invalid-feedback" data-sb-feedback="email:required">Une adresse email est requise.</div>
                             <div class="invalid-feedback" data-sb-feedback="email:email">L'adresse email est invalide.</div>
                         </div>
                         <!-- Password-->
                         <div class="form-floating mb-3">
-                            <input data_bv_identical="true" data-bv-identical-field="password-confirm" data-bv-identical-message="Les mots de passe ne correspondent pas" class="form-control" id="password" name='password' type="password" placeholder="********" data-sb-validations="required" />
+                            <input data_bv_identical="true" data-bv-identical-field="password-confirm" data-bv-identical-message="Les mots de passe ne correspondent pas" class="form-control" id="password" name='password' type="password" placeholder="********" data-sb-validations="required" required/>
                             <label for="password">Mot de passe</label>
                             <div class="invalid-feedback" data-sb-feedback="password:required">Un mot de passe est requis.</div>
                         </div>
-                        <!--Confirm Password-->
-                        <div class="form-floating mb-3">
-                            <input data_bv_identical="true" data-bv-identical-field="password" data-bv-identical-message="Les mots de passe ne correspondent pas" placeholder="********" data-sb-validations="required">
-                            <label for="password-confirm">Confirmer le mot de passe</label>
-                            <div class="invalid-feedback" data-sb-feedback="password-confirm:required">Confirmez le mot de passe.</div>
-                        </div>
                         <!-- Age -->
                         <div class="form-floating mb-3">
-                            <input name='age' id="age" type="date" data-sb-validations="required">
-                            <label for="password">Mot de passe</label>
+                            <input name='age' id="age" type="date" data-sb-validations="required" class="form-control" required>
+                            <label for="age">Age</label>
                             <div class="invalid-feedback" data-sb-feedback="password:required">Un age est requis.</div>
                         </div>
-                        <!-- <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer</button> -->
-                        <input type='submit'>
-                        <span class='float-right'>Vous avez déjà un compte ? <a href="signin">Se connecter</a></span>
+                        <div>
+                            <button class="btn btn-primary btn-xl float start" id="submitButton" type="submit">Envoyer</button>
+                            <span class="float end">Vous avez déjà un compte ? <a href="signin">Se connecter</a></span>
+                        </div>
                     </form>
                     
                 </div>

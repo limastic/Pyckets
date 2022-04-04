@@ -1,4 +1,4 @@
-from ast import stmt
+from sqlalchemy import exc
 from flask import Flask, request
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -16,19 +16,15 @@ app.config.from_mapping(
     )  
 
 class Profile(db.Model):  # Création de la table Profile avec sql al-chemy
-    id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(20))
     last_name = db.Column(db.String(20))
     age = db.Column(db.Integer)
     password = db.Column(db.String())
-    email = db.Column(db.String())
+    email = db.Column(db.String(), primary_key=True, unique=True)
 
     # la méthode __repr__ représente a quoi va ressembler un tuple de la relation
     def __repr__(self):
         return f"Name : {self.first_name}, Age: {self.age}"
-
-
-
 
 db.create_all()
 
@@ -61,18 +57,23 @@ def display_db():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    # handle the POST request
+    # ceci sera effectuté après que le formulaire ait été validé
     if request.method == 'POST':
+        email = request.form.get('email')  # On récupère les valeurs dans le formulaire
         name = request.form.get('name')
         password = request.form.get('password')
-        email = request.form.get('email')
+        age = request.form.get('age')
         name = name.split()
-        print(name, type(name))
-        new_profile = Profile(id=None, first_name=name[0], last_name=name[1], age=None, password=password, email=email)
-        db.session.add(new_profile)
-        db.session.commit()
+        # on crée un nouveau profil avec ces valeurs
+        new_profile = Profile(first_name=name[0], last_name=name[1], age=age, password=password, email=email)
+        try:
+            db.session.add(new_profile)  # On les ajoute a la base de données
+            db.session.commit()
+        except exc.IntegrityError:  # si l'adresse email est déjà dans la base de données on affiche une erreur
+            return render_template('already_known.html')
         return render_template("signedup.html", name=name)
-        # otherwise handle the GET request
+    # au début on affiche la template de base
+    print(Profile.query.all())
     return render_template("signup.html")
 
 
