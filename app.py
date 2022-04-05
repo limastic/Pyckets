@@ -63,7 +63,8 @@ def signup():
         name = request.form.get('name')
         password = request.form.get('password')
         age = request.form.get('age')
-        name = name.split()
+        if " " in name:
+            name = name.split()
         # on crée un nouveau profil avec ces valeurs
         new_profile = Profile(first_name=name[0], last_name=name[1], age=age, password=password, email=email)
         try:
