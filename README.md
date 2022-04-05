@@ -24,11 +24,17 @@ Flask est utilisé pour le serveur.
 
 Voici la hiérarchie des fichiers :
 
-> Pyckets
-> > static
-> > > assets (contient uniquement des éléments graphiques)
-> > > > img
-> > > > > events
+> Pyckets :
+> > database :
+> > > site.db
+> > 
+> > problèmes :
+> > > Problèmes / solutions.txt
+> >
+> > static :
+> > > assets (contient uniquement des éléments graphiques) :
+> > > > img :
+> > > > > events :
 > > > > > > cabin.png |
 > > > > > > cake.png |
 > > > > > > circurs.png |
@@ -46,10 +52,13 @@ Voici la hiérarchie des fichiers :
 > >
 > >  style.css (feuille de style pour le html)
 > >
-> > templates (fichiers html des pages du site)
+> > templates (fichiers html des pages du site) :
 > > > index.html |
 > > > social.html |
-> > > soon.html
+> > > soon.html |
+> > > already_known.html |
+> > > signup.hmtl |
+> > > signedup.html |
 > >
 > > .gitignore
 > >
