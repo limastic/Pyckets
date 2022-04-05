@@ -1,5 +1,5 @@
 from sqlalchemy import exc
-from flask import Flask, request
+from flask import Flask, request, redirect
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 
@@ -65,13 +65,16 @@ def signup():
         age = request.form.get('age')
         if " " in name:
             name = name.split()
-        # on crée un nouveau profil avec ces valeurs
-        new_profile = Profile(first_name=name[0], last_name=name[1], age=age, password=password, email=email)
+            # on crée un nouveau profil avec ces valeurs
+            new_profile = Profile(first_name=name[0], last_name=name[1], age=age, password=password, email=email)
+        else:
+            new_profile = Profile(first_name=name, last_name=None, age=age, password=password, email=email)
         try:
             db.session.add(new_profile)  # On les ajoute a la base de données
             db.session.commit()
         except exc.IntegrityError:  # si l'adresse email est déjà dans la base de données on affiche une erreur
-            return render_template('already_known.html')
+            return render_template('already_known.html', email=email)
+        print(f"name : {name}")
         return render_template("signedup.html", name=name)
     # au début on affiche la template de base
     print(Profile.query.all())
@@ -80,7 +83,18 @@ def signup():
 
 @app.route('/signin')
 def signin():
-    return render_template('soon.html')
+    return render_template('signin.html')
+
+
+@app.route("/dev")
+def dev():
+    return render_template('dev.html', var=[1, 2, 3, 4, 5])
+
+
+# Si l'utilisateur rentre /login, ça le redirigera vers la page signin
+@app.route('/login')
+def login():
+    return redirect('/signin')
 
 if __name__ == "__main__":
     app.run()

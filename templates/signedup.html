@@ -8,7 +8,13 @@
 </head>
 <body class="bg-primary">
 <section class="page-section text-white mb-0" id="soon">
-    <h2 class="page-section-heading text-center text-uppercase text-white">Merci, vous etes bien inscrit {{name}}, vous allez être redirigé à l'accueil</h2>
+    <h2 class="page-section-heading text-center text-uppercase text-white">Merci, vous etes bien inscrit 
+        {% for name_piece in name %}
+        {{ name_piece }} 
+        {% endfor %}
+    </h2>
+    <h2 class="page-section-heading text-center text-uppercase text-white">Vous pouvez retourner à l'accueil.</h2>
+    </h2>
     <div class="text-center mt-4">
     <a class="btn btn-xl btn-outline-light" href="/">
         Retour à l'accueil
