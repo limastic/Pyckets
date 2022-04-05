@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>S'inscrire</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="icon" href="{{ url_for('static', filename='assets/icon.png')}}" />
+</head>
+<body>
+    <!-- Contact Section-->
+    <section class="page-section" id="login">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">S'inscrire</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <form id="contactForm" method="POST">
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name='name' id="name" type="text" placeholder="Entrez votre nom et prénom" data-sb-validations="required" required/>
+                            <label for="name">Prénom et Nom</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Une identité est requise.</div>
+                        </div>
+                        <!-- Email address input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name='email' id="email" type="email" placeholder="nom@exemple.com" data-sb-validations="required,email" required/>
+                            <label for="email">Addresse Email</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">Une adresse email est requise.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">L'adresse email est invalide.</div>
+                        </div>
+                        <!-- Password-->
+                        <div class="form-floating mb-3">
+                            <input data_bv_identical="true" data-bv-identical-field="password-confirm" data-bv-identical-message="Les mots de passe ne correspondent pas" class="form-control" id="password" name='password' type="password" placeholder="********" data-sb-validations="required" required/>
+                            <label for="password">Mot de passe</label>
+                            <div class="invalid-feedback" data-sb-feedback="password:required">Un mot de passe est requis.</div>
+                        </div>
+                        <!-- Age -->
+                        <div class="form-floating mb-3">
+                            <input name='age' id="age" type="date" data-sb-validations="required" class="form-control" required>
+                            <label for="age">Age</label>
+                            <div class="invalid-feedback" data-sb-feedback="password:required">Un age est requis.</div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary btn-xl float start" id="submitButton" type="submit">Envoyer</button>
+                            <span class="float end">Vous avez déjà un compte ? <a href="signin">Se connecter</a></span>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </section>
+</body>
+</html>

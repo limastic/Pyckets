@@ -12,17 +12,29 @@
 - Affichage d'une variable passable dans l'url (donc avec la méthode **GET**)
 - Opérations sur les variables passées aussi dans l'url 
 
+## V.1 : 
+- Ajout de l'onglet "mon compte"
+- Ajout d'un formulaire d'inscription dans cet onglet
+- Récupération des données entrées dans le formulaire dans la relation Profile
+- Vérification préalable de l'unicité des données (adresse email unique)
+
 # Conception
 
 Flask est utilisé pour le serveur. 
 
 Voici la hiérarchie des fichiers :
 
-> Pyckets
-> > static
-> > > assets (contient uniquement des éléments graphiques)
-> > > > img
-> > > > > events
+> Pyckets :
+> > database :
+> > > site.db
+> > 
+> > problèmes :
+> > > Problèmes / solutions.txt
+> >
+> > static :
+> > > assets (contient uniquement des éléments graphiques) :
+> > > > img :
+> > > > > events :
 > > > > > > cabin.png |
 > > > > > > cake.png |
 > > > > > > circurs.png |
@@ -40,10 +52,13 @@ Voici la hiérarchie des fichiers :
 > >
 > >  style.css (feuille de style pour le html)
 > >
-> > templates (fichiers html des pages du site)
+> > templates (fichiers html des pages du site) :
 > > > index.html |
 > > > social.html |
-> > > soon.html
+> > > soon.html |
+> > > already_known.html |
+> > > signup.hmtl |
+> > > signedup.html |
 > >
 > > .gitignore
 > >
