@@ -77,12 +77,15 @@ def signup():
         print(f"name : {name}")
         return render_template("signedup.html", name=name)
     # au début on affiche la template de base
-    print(Profile.query.all())
     return render_template("signup.html")
 
 
-@app.route('/signin')
+@app.route('/signin', methods=["GET", "POST"])
 def signin():
+    if request.method == "POST":
+        email = request.form.get('email')
+        password = request.form.get('password')
+        return "email : {} , password : {}".format(email,password)
     return render_template('signin.html')
 
 
