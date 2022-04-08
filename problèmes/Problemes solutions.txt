@@ -4,3 +4,11 @@ Solution :
 recherche sur internet et test de plusieurs Solutions qui ne semblaient pas adaptées a mon Problème
 finalement j'ai trouvé la solution ici https://www.educba.com/flask-get-post-data/ , contrairement 
 aux autres que j'avais trouvées, celle-ci n'utilisait pas de javascript et me convenait donc mieux
+
+Problème 2:
+Je cherche comment récupérer un certain tuple de ma bdd avec sqlalchemy 
+Je pourrais utiliser Profile.query.all(), mais cela récupère tous les éléments et si on a une grande
+bdd, ça pourrait poser Problème.
+Je cherche des solutions sur internet:
+- .filter() permet d'appliquer des filtres dans la recherche :
+    Profile.query.filter(Profile.email.like("email souhaité")).all()

@@ -2,6 +2,7 @@ from sqlalchemy import exc
 from flask import Flask, request, redirect
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
+from convert_birth_date import convertBirthDate as cvbd
 
 # créer l'application et lier la base de données
 app = Flask(__name__)
@@ -61,8 +62,9 @@ def signup():
     if request.method == 'POST':
         email = request.form.get('email')  # On récupère les valeurs dans le formulaire
         name = request.form.get('name')
+        
         password = request.form.get('password')
-        age = request.form.get('age')
+        age = cvbd(request.form.get('age'))  # On convertit notre date de naissance en age
         if " " in name:
             name = name.split()
             # on crée un nouveau profil avec ces valeurs
@@ -85,13 +87,16 @@ def signin():
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
+        data = Profile.query(email)
         return "email : {} , password : {}".format(email,password)
     return render_template('signin.html')
 
 
 @app.route("/dev")
 def dev():
-    return render_template('dev.html', var=[1, 2, 3, 4, 5])
+    data = Profile.query.filter(Profile.email.like("faust.nino@gmail.com")).all()
+    print(data)
+    return render_template('dev.html', var=data)
 
 
 # Si l'utilisateur rentre /login, ça le redirigera vers la page signin
