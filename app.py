@@ -62,8 +62,8 @@ def signup():
     if request.method == 'POST':
         email = request.form.get('email')  # On récupère les valeurs dans le formulaire
         name = request.form.get('name')
-        
         password = request.form.get('password')
+        print(request.form.get("age"))
         age = cvbd(request.form.get('age'))  # On convertit notre date de naissance en age
         if " " in name:
             name = name.split()

@@ -1,20 +1,20 @@
 from datetime import date
 
 def convertBirthDate(birth_date : str) -> str:
-    today = date.today().strftime("%d/%m/%Y")
+    today = date.today().strftime("%Y/%m/%d")
 
     # On regarde si la date de naissance est déjà passée cette année
     birthDatePassed = False
-    if int(today[3:5]) == int(birth_date[3:5]) and int(today[:1]) >= int(birth_date[:1]):
+    if int(today[5:7]) == int(birth_date[5:7]) and int(today[8:]) >= int(birth_date[8:]):
         birthDatePassed = True
-    if int(today[3:5]) > int(birth_date[3:5]):
+    if int(today[5:7]) > int(birth_date[5:7]):
         birthDatePassed = True 
     
-    age = int(today[6:]) - int(birth_date[6:])
+    age = int(today[:3]) - int(birth_date[:3])
     if not birthDatePassed:
         age -= 1
     
     return age
 
 if __name__ == "__main__":
-    print(convertBirthDate('30-04-2004'))
+    print(convertBirthDate('2004-04-30'))
