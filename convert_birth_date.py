@@ -17,4 +17,4 @@ def convertBirthDate(birth_date : str) -> str:
     return age
 
 if __name__ == "__main__":
-    
+    print(convertBirthDate('30-04-2004'))
