@@ -12,3 +12,12 @@ bdd, ça pourrait poser Problème.
 Je cherche des solutions sur internet:
 - .filter() permet d'appliquer des filtres dans la recherche :
     Profile.query.filter(Profile.email.like("email souhaité")).all()
+    mais cela ne selectionnait pas tout le tuple
+
+J'ai alors trouvé cette solution :
+Profile.query.filter_by(email="email souhaité").first()
+qui permettait de recupérer le tuple qui correspondait a l'addresse email souhaitée
+mais je rencontre le même Problème : uniquement le nom et l'age sont récupérés.
+J'ai alors compris que le Problème venait de ce que j'avais mit dans le __repr__ de ma class Profile.
+Il s'agissait donc simplement d'un affichage, mais les valeurs étaient bien toutes récupérées dans les deux
+cas.

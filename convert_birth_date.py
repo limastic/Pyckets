@@ -1,6 +1,7 @@
 from datetime import date
 
 def convertBirthDate(birth_date : str) -> str:
+    # On récupère la date du jour
     today = date.today().strftime("%Y/%m/%d")
 
     # On regarde si la date de naissance est déjà passée cette année
@@ -10,7 +11,7 @@ def convertBirthDate(birth_date : str) -> str:
     if int(today[5:7]) > int(birth_date[5:7]):
         birthDatePassed = True 
     
-    age = int(today[:3]) - int(birth_date[:3])
+    age = int(today[:4]) - int(birth_date[:4])
     if not birthDatePassed:
         age -= 1
     

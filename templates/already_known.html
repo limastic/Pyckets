@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Pyckets</title>
-    <link rel="icon" href="{{ url_for('static', filename='assets/icon.png')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body class="bg-primary">
-<section class="page-section text-white mb-0" id="soon">
-    <h2 class="page-section-heading text-center text-uppercase text-white">l'addresse {{email}} est déjà utilisée !</h2>
-    <div class="text-center mt-4">
-    <a class="btn btn-xl btn-outline-light disabled" href="/login">
-        Se connecter
-    </a>
-    <a class="btn btn-xl btn-outline-light" href="/">
-        Retour à l'accueil
-    </a>
-</div>
-</section>
-
-</body>
-</html>
+{% extends "message.html" %}
+{% block title %} Vous avez déjà un compte {% endblock %}
+{% block message %} l'adresse :{% endblock %}
+{% block values %}{{email}} est déjà utilisée{% endblock %}
+{% block action %}{% endblock%}
+{% block addInSection %}
+<a class="btn btn-xl btn-outline-light" href="/login">
+    Se connecter
+</a>
+{% endblock %}

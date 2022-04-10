@@ -1,0 +1,12 @@
+{% extends "message.html"%}
+{% block title %}Adresse email inconnue{% endblock %}
+{% block message %}L'adresse email{% endblock %}
+{% block values %}{{email}} n'est reliée à aucun compte !{% endblock %}
+{% block action %}{% endblock %}
+{% block link %}"/signup"{% endblock %}
+{% block btnMessage %}S'inscrire{% endblock %}
+{% block addInSection %}
+<a class="btn btn-xl btn-outline-light" href="/">
+    Retour à l'accueil
+</a>
+{% endblock %}

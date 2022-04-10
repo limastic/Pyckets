@@ -1,5 +1,5 @@
 from sqlalchemy import exc
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, abort
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 from convert_birth_date import convertBirthDate as cvbd
@@ -43,8 +43,8 @@ def social():
 
 @app.route('/utilisateur')
 @app.route('/utilisateur/<name>')
-def affiche_nom(name="Sacha le plus beau"):
-    return 'merci esclave, ' + str(name)
+def affiche_nom(name="Kan-à-ille"):
+    return 'Bienvenue ' + str(name)
 
 @app.route('/somme/<int:num1>/<int:num2>')
 def somme(num1, num2):
@@ -87,15 +87,20 @@ def signin():
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
-        data = Profile.query(email)
-        return "email : {} , password : {}".format(email,password)
+        data = Profile.query.filter_by(email=email).first()
+        if data is None:
+            return render_template("unknown_email.html", email=email)
+        if data.password == password:
+            full_name = [data.first_name, data.last_name]
+            LOGGED_IN = (True, email)
+            return render_template("logged_in.html", name=full_name)
+        return render_template("wrong_password.html")
     return render_template('signin.html')
 
 
 @app.route("/dev")
 def dev():
-    data = Profile.query.filter(Profile.email.like("faust.nino@gmail.com")).all()
-    print(data)
+    data = Profile.query.filter_by(email='faust.nino@gmail.com').first()
     return render_template('dev.html', var=data)
 
 
@@ -103,6 +108,10 @@ def dev():
 @app.route('/login')
 def login():
     return redirect('/signin')
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 if __name__ == "__main__":
     app.run()
