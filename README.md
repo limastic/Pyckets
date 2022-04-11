@@ -24,6 +24,13 @@
 - Possibilité de se déconnecter
 - Ré-organisation de la structure des templates html (jinja)
 
+## V.3 :
+- Ajout de la possibilité de créer un évènement (Si on a plus de 18 ans)
+- Correction d'un bug de la v2 sur l'affichage du nom d'utilisateur
+- gestion du mauvais remplissage du formulaire de création d'évènement
+- création d'une relation "Events" pour les évènements
+- Nécéssité d'être connecté pour creer un évènement.
+
 # Conception
 
 Flask est utilisé pour le serveur, SQL-Alchemy pour gérer la base de données, jinja pour les templates et pour
@@ -77,6 +84,12 @@ Voici la hiérarchie des fichiers :
 > > > succesfuly_disconnected.html |
 > > > unknown_email.html |
 > > > wrong_password.html |
+> > > createEvent.html |
+> > > eventExists.html |
+> > > eventSuccesfullyCreated.html |
+> > > invalidCategory.html |
+> > > tooYoung.html |
+> > 
 > > .gitignore
 > >
 > > app.py (fonctions flask gérant le serveur)
