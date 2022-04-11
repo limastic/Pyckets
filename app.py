@@ -3,6 +3,9 @@ from flask import Flask, request, redirect, abort
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 from convert_birth_date import convertBirthDate as cvbd
+from numpy import full
+
+LOGGED_IN = (False, "")
 
 # créer l'application et lier la base de données
 app = Flask(__name__)
@@ -31,7 +34,14 @@ db.create_all()
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    if LOGGED_IN[0]:
+        if len(LOGGED_IN[1]) > 1:
+            login = str(LOGGED_IN[1][0]) +" " + str(LOGGED_IN[1][1])
+        else:
+            login = LOGGED_IN[1]
+    else:
+        login = "Mon compte"
+    return render_template("index.html", login=login)
 
 @app.route('/creer-un-evenement')
 def event():
@@ -84,6 +94,7 @@ def signup():
 
 @app.route('/signin', methods=["GET", "POST"])
 def signin():
+    global LOGGED_IN
     if request.method == "POST":
         email = request.form.get('email')
         password = request.form.get('password')
@@ -92,7 +103,7 @@ def signin():
             return render_template("unknown_email.html", email=email)
         if data.password == password:
             full_name = [data.first_name, data.last_name]
-            LOGGED_IN = (True, email)
+            LOGGED_IN = (True, full_name)
             return render_template("logged_in.html", name=full_name)
         return render_template("wrong_password.html")
     return render_template('signin.html')
@@ -109,6 +120,15 @@ def dev():
 def login():
     return redirect('/signin')
 
+
+@app.route('/account')
+def account():
+    if LOGGED_IN[0]:
+        return render_template('account.html')
+    else:
+        return render_template('not_logged_in.html')
+
+# On configure une page d'erreur personnalisée 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
