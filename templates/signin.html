@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>S'inscrire</title>
+    <title>Se connecter</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
     <link rel="icon" href="{{ url_for('static', filename='assets/icon.png')}}" />
 </head>
@@ -11,7 +11,7 @@
     <section class="page-section" id="login">
         <div class="container">
             <!-- Contact Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">S'inscrire</h2>
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Se connecter</h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -22,13 +22,6 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7">
                     <form id="contactForm" method="POST">
-                        <!-- Name input-->
-                        <div class="form-floating mb-3">
-                            <input class="form-control" name='name' id="name" type="text" placeholder="Entrez votre nom et prénom" data-sb-validations="required" required/>
-                            <label for="name">Prénom et Nom</label>
-                            <div class="invalid-feedback" data-sb-feedback="name:required">Une identité est requise.</div>
-                        </div>
-                        <!-- Email address input-->
                         <div class="form-floating mb-3">
                             <input class="form-control" name='email' id="email" type="email" placeholder="nom@exemple.com" data-sb-validations="required,email" required/>
                             <label for="email">Addresse Email</label>
@@ -41,15 +34,8 @@
                             <label for="password">Mot de passe</label>
                             <div class="invalid-feedback" data-sb-feedback="password:required">Un mot de passe est requis.</div>
                         </div>
-                        <!-- Age -->
-                        <div class="form-floating mb-3">
-                            <input name='age' id="age" type="date" data-sb-validations="required" class="form-control" required>
-                            <label for="age">Date de Naissance</label>
-                            <div class="invalid-feedback" data-sb-feedback="password:required">Un age est requis.</div>
-                        </div>
-                        <div>
-                            <button class="btn btn-primary btn-xl float start" id="submitButton" type="submit">Envoyer</button>
-                            <span class="float end">Vous avez déjà un compte ? <a href="/signin">Se connecter</a></span>
+                            <button class="btn btn-primary btn-xl float start" id="submitButton" type="submit">S'identifier</button>
+                            <span class="float end">Vous n'avez pas de compte ?<a href="/signup">S'inscrire</a></span>
                         </div>
                     </form>
                     

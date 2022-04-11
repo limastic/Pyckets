@@ -30,7 +30,7 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="#evenements">évenements</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="#àpropos">à propos</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="#contact">Contact</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="/signup">Mon compte</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded gray" href="{% if login != 'Mon compte'%}/account{% else %}/signin{% endif %}">{{login}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -203,7 +203,7 @@
                             <!-- an error submitting the form-->
                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Une erreur est subvenue.</div></div>
                             <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Envoyer</button>
+                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Bientôt disponible !</button>
                         </form>
                     </div>
                 </div>

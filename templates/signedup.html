@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Pyckets</title>
-    <link rel="icon" href="{{ url_for('static', filename='assets/icon.png')}}" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body class="bg-primary">
-<section class="page-section text-white mb-0" id="soon">
-    <h2 class="page-section-heading text-center text-uppercase text-white">Merci, vous etes bien inscrit {{name}}, vous allez être redirigé à l'accueil</h2>
-    <div class="text-center mt-4">
-    <a class="btn btn-xl btn-outline-light" href="/">
-        Retour à l'accueil
-    </a>
-</div>
-</section>
-
-</body>
-</html>
+{% extends 'message.html' %}
+{% block title %}Bien inscrit !{% endblock %}
+{% block message %}Merci, vous êtes bien inscrit, {% endblock %}
+{% block action %}Vous pouvez retourner a l'accueil{% endblock %}
