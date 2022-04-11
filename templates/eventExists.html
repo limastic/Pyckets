@@ -1,0 +1,10 @@
+{% extends "message.html" %}
+{% block title %} Nom déjà utilisé {% endblock %}
+{% block message %} Le nom :{% endblock %}
+{% block values %}{{name}} est déjà utilisé{% endblock %}
+{% block action %}{% endblock%}
+{% block addInSection %}
+<a class="btn btn-xl btn-outline-light" href="/create-event">
+    Réessayer
+</a>
+{% endblock %}

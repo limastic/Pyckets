@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Créer un évenement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <link rel="icon" href="{{ url_for('static', filename='assets/icon.png')}}" />
+</head>
+<body>
+    <!-- Contact Section-->
+    <section class="page-section" id="login">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Créer un évenement</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <form id="contactForm" method="POST">
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" name='name' id="name" type="text" placeholder="Entrez votre nom et prénom" data-sb-validations="required" required/>
+                            <label for="name">Intitulé de l'évenement</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Une identité est requise.</div>
+                        </div>
+                        <!-- Category input-->
+                        <div class="form-floating mb-2">
+                            <select class="form-control" name='category' required>
+                                <option value="default">Catégorie</option>
+                                <option value="ext">Activités en extérieur</option>
+                                <option value="fetes">Fêtes</option>
+                                <option value="spec">Spectacles/Concerts</option>
+                                <option value="virtual">Evenements virtuels</option>
+                                <option value="cultural">Activités culturelles</option>
+                                <option value="touristic">Visites touristiques</option>
+                            </select>
+                        </div>
+                        <!-- Nombre de places -->
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" name="places" required>
+                            <label for="number">Nombre de places</label>
+                        </div>
+                        <!-- price input -->
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" name="price" required>
+                            <label for="number">Prix unitaire (€)</label>
+                        </div>
+                        <!-- Date input -->
+                        <div class="form-floating mb-3">
+                            <input name='date' id="age" type="date" data-sb-validations="required" class="form-control" required>
+                            <label for="date">Date de L'évenement</label>
+                        </div>
+                        <!-- min age input -->
+                        <div class="form-floating mb-3">
+                            <input type="numbre" class="form-control" name="minAge" required>
+                            <label for="minAge">Âge minimum requis</label>
+                        </div>
+                        <!-- Description input -->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" name="description" id="description" type="text" placeholder="Entrez votre message" style="height: 10rem" required   ></textarea>
+                            <label for="Description">Description de l'évenement</label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">Un message est requis.</div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary btn-xl float start" id="submitButton" type="submit">Poster</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </section>
+</body>
+</html>

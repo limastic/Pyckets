@@ -1,3 +1,5 @@
+from pydoc import describe
+from unicodedata import category
 from sqlalchemy import exc
 from flask import Flask, request, redirect, abort
 from flask.templating import render_template
@@ -30,6 +32,19 @@ class Profile(db.Model):  # Création de la table Profile avec sql al-chemy
     def __repr__(self):
         return f"Name : {self.first_name}, Age: {self.age}"
 
+
+class Events(db.Model):
+    name = db.Column(db.String(), primary_key=True, unique=True)
+    category = db.Column(db.String())
+    places = db.Column(db.Integer())
+    price = db.Column(db.Integer())
+    date = db.Column(db.String())
+    description = db.Column(db.String())
+    minAge= db.Column(db.Integer())
+
+    def __repr__(self):
+        return f"Event name : {self.name}, Description : {self.description}"
+
 db.create_all()
 
 @app.route('/')
@@ -43,12 +58,40 @@ def index():
         login = "Mon compte"
     return render_template("index.html", login=login)
 
-@app.route('/creer-un-evenement')
+@app.route('/create-event', methods=["POST", "GET"])
 def event():
     if LOGGED_IN[0]:
-        return render_template("soon.html")
+        # On vérifie si l'utilisateur a l'age requis
+        data = Profile.query.filter_by(first_name = LOGGED_IN[1][0]).first()
+        userAge = data.age
+        if userAge >=18:
+            if request.method == "POST":
+                # On récupère les valeurs du formulaire
+                name = request.form.get("name")
+                category = request.form.get("category")
+                places = request.form.get("places")
+                price = request.form.get("price")
+                date = request.form.get("date")
+                ageMin = request.form.get("minAge")
+                description = request.form.get("description")
+
+                # On teste les valeurs 
+                if category == "default":
+                    return render_template("invalidCategory.html")
+                new_event = Events(name=name, category=category, places=places, price=price, date=date, description=description, minAge=ageMin)
+
+                try:
+                    db.session.add(new_event)  # On les ajoute a la base de données
+                    db.session.commit()
+                except exc.IntegrityError:  # si le nom de l'évenement est déjà dans la base de données on affiche une erreur
+                    return render_template('eventExists.html', name=name)
+                return render_template("eventSuccesfulyCreated.html", name=name)
+                
+            return render_template("createEvent.html")
+        else:
+            return render_template("tooYoung.html")
     else:
-        return render_template("signup.html")
+        return render_template("not_logged_in.html")
 
 @app.route('/réseaux')
 def social():
@@ -89,7 +132,6 @@ def signup():
             db.session.commit()
         except exc.IntegrityError:  # si l'adresse email est déjà dans la base de données on affiche une erreur
             return render_template('already_known.html', email=email)
-        print(f"name : {name}")
         return render_template("signedup.html", name=name)
     # au début on affiche la template de base
     return render_template("signup.html")
