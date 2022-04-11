@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from convert_birth_date import convertBirthDate as cvbd
 from numpy import full
 
-LOGGED_IN = (False, "")
+LOGGED_IN = (False, )
 
 # créer l'application et lier la base de données
 app = Flask(__name__)
@@ -123,10 +123,18 @@ def login():
 
 @app.route('/account')
 def account():
+    global LOGGED_IN
     if LOGGED_IN[0]:
         return render_template('account.html')
     else:
         return render_template('not_logged_in.html')
+
+
+@app.route('/disconnect')
+def disconnect():
+    global LOGGED_IN
+    LOGGED_IN = (False, )
+    return render_template("succesfuly_disconnected.html")
 
 # On configure une page d'erreur personnalisée 
 @app.errorhandler(404)
