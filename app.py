@@ -53,7 +53,7 @@ def index():
         if len(LOGGED_IN[1]) > 1:
             login = str(LOGGED_IN[1][0]) +" " + str(LOGGED_IN[1][1])
         else:
-            login = LOGGED_IN[1]
+            login = LOGGED_IN[1][0]
     else:
         login = "Mon compte"
     return render_template("index.html", login=login)
@@ -147,7 +147,10 @@ def signin():
         if data is None:
             return render_template("unknown_email.html", email=email)
         if data.password == password:
-            full_name = [data.first_name, data.last_name]
+            if data.last_name is not None:
+                full_name = [data.first_name, data.last_name]
+            else:
+                full_name = [data.first_name]
             LOGGED_IN = (True, full_name)
             return render_template("logged_in.html", name=full_name)
         return render_template("wrong_password.html")
