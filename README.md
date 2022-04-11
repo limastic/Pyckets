@@ -18,9 +18,17 @@
 - Récupération des données entrées dans le formulaire dans la relation Profile
 - Vérification préalable de l'unicité des données (adresse email unique)
 
+## V.2 :
+- Ajout de la page "se connecter" permettant de se connecter au compte inscrit
+- Gestion des mots de passes (non cryptés)
+- Possibilité de se déconnecter
+- Ré-organisation de la structure des templates html (jinja)
+
 # Conception
 
-Flask est utilisé pour le serveur. 
+Flask est utilisé pour le serveur, SQL-Alchemy pour gérer la base de données, jinja pour les templates et pour
+limiter la redondance du code  
+Pour le Frontend, HTML CSS + Javascript utilisés.
 
 Voici la hiérarchie des fichiers :
 
@@ -59,10 +67,21 @@ Voici la hiérarchie des fichiers :
 > > > already_known.html |
 > > > signup.hmtl |
 > > > signedup.html |
-> >
+> > > 404.html |
+> > > account.html |
+> > > dev.html |
+> > > logged_in.html |
+> > > message.html (template servant de base pour bcp d'autres) |
+> > > not_logged_in.html |
+> > > signin.html |
+> > > succesfuly_disconnected.html |
+> > > unknown_email.html |
+> > > wrong_password.html |
 > > .gitignore
 > >
 > > app.py (fonctions flask gérant le serveur)
+> >
+> > convert_birth_date.py (Fonction pour convertir une date de naissance en age)
 > >
 > > README.md
 > >
