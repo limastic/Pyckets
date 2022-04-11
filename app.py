@@ -45,7 +45,10 @@ def index():
 
 @app.route('/creer-un-evenement')
 def event():
-    return render_template("soon.html")
+    if LOGGED_IN[0]:
+        return render_template("soon.html")
+    else:
+        return render_template("signup.html")
 
 @app.route('/réseaux')
 def social():
